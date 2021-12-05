@@ -1,0 +1,41 @@
+<h4 class="text-center">Registrate y muestra al mundo tu gato</h4>
+
+<form [formGroup]="nuevoUsuarioForm" (submit)="registrar()">
+  <div class="mb-2">
+    <input
+      type="email"
+      class="form-control"
+      placeholder="Correo electronico"
+      formControlName="email"
+    />
+  </div>
+  <div class="mb-2">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Nombre completo"
+      formControlName="fullName"
+    />
+  </div>
+  <div class="mb-2">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Usuario"
+      formControlName="userName"
+    />
+  </div>
+  <div class="mb-2">
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Contrasena"
+      formControlName="password"
+    />
+  </div>
+  <div class="d-grid gap-2 col-12 mx-auto">
+    <button class="btn btn-primary btn-block">Registrarse</button>
+  </div>
+</form>
+
+<p>¿Ya tienes una cuenta? <a [routerLink]="['']">Accede</a></p>
