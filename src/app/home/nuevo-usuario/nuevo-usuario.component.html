@@ -8,6 +8,14 @@
       placeholder="Correo electronico"
       formControlName="email"
     />
+    <app-message
+      *ngIf="nuevoUsuarioForm.get('email')?.errors?.['required'] && nuevoUsuarioForm.get('email')?.['touched']"
+      mensaje="Email requerido"
+    ></app-message>
+    <app-message
+      *ngIf="nuevoUsuarioForm.get('email')?.errors?.['email'] && nuevoUsuarioForm.get('email')?.['touched']"
+      mensaje="Formato invalido"
+    ></app-message>
   </div>
   <div class="mb-2">
     <input
@@ -16,6 +24,17 @@
       placeholder="Nombre completo"
       formControlName="fullName"
     />
+    <app-message
+      *ngIf="nuevoUsuarioForm.get('fullName')?.errors?.['required'] && nuevoUsuarioForm.get('fullName')?.touched"
+      mensaje="Nombre completo requerido"
+    ></app-message>
+    <app-message
+      *ngIf="
+        nuevoUsuarioForm.get('fullName')?.errors &&
+        nuevoUsuarioForm.get('fullName')?.touched
+      "
+      mensaje="Deben ser al menos 4 letras"
+    ></app-message>
   </div>
   <div class="mb-2">
     <input
@@ -24,6 +43,14 @@
       placeholder="Usuario"
       formControlName="userName"
     />
+    <app-message
+      *ngIf="nuevoUsuarioForm.get('userName')?.errors?.['minuscula']"
+      mensaje="El usuario debe ser en minusculas"
+    ></app-message>
+    <app-message
+      *ngIf="nuevoUsuarioForm.get('userName')?.errors?.['usuarioExistente']"
+      mensaje="El usuario ya existe"
+    ></app-message>
   </div>
   <div class="mb-2">
     <input
@@ -32,6 +59,10 @@
       placeholder="Contrasena"
       formControlName="password"
     />
+    <app-message
+      *ngIf="nuevoUsuarioForm?.errors"
+      mensaje="El usuario y la contrasena no pueden ser iguales"
+    ></app-message>
   </div>
   <div class="d-grid gap-2 col-12 mx-auto">
     <button class="btn btn-primary btn-block">Registrarse</button>
