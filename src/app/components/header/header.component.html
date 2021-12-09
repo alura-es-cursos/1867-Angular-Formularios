@@ -1,0 +1,17 @@
+<header class="sticky-top">
+  <nav class="container-fluid navbar navbar-dark bg-primary">
+    <a class="navbar-brand">CatBook</a>
+    <div *ngIf="user$ | async as user">
+      <div *ngIf="user.name; else login" class="text-light">
+        <i class="fa fa-user-circle"></i>
+        <span class="mx-2 text-light">{{ user.name }}</span>
+        <a (click)="logout()">Cerrar sesión</a>
+      </div>
+    </div>
+  </nav>
+  <ng-template #login>
+    <span class="navbar-text">
+      <a [routerLink]="['']">Acceder</a>
+    </span>
+  </ng-template>
+</header>
